@@ -13,10 +13,11 @@
     /* Animation design */
 .animcov {
     width: 100%;
-    height: 98%;
+    height: 90%;
     top: 80px;
     position: relative;
     display: flex;
+    /* position: fixed; */
 }
 
 .anim1 {
@@ -123,7 +124,7 @@ nav {
     top: 0;
     padding: 0 1%;
     color: #fff;
-    /* box-shadow: 0 0 0 2px rgba(5, 96, 255, 0.8); */
+    box-shadow: 0 0 0 2px rgba(5, 96, 255, 0.8);
     position: fixed;
     z-index: 1000;
 }
@@ -180,10 +181,15 @@ nav {
     list-style: none;
 }
 
-.appd{
+.appd, .signup{
     display: flex;
     align-items: center;
     gap: 5px;
+    color: #c9c7c7e2;
+}
+
+.appd:hover, .signup:hover {
+    color: #fff;
 }
 
 .appd span {
@@ -202,10 +208,17 @@ nav {
     height: 15px;
 }
 
+.linedec {
+    width: 5px;
+    height: 80%;
+    background-color: #fff;
+}
+
 .login {
     width: 120px;
     height: 50px;
     background-color: #fff;
+    border: #5a5858;
     border-radius: 800px;
     color: #000;
     display: flex;
@@ -217,4 +230,102 @@ nav {
 .login:hover{
     background-color: #ffffffe2;
     color: #000;
+}
+
+.heros {
+    position: absolute;
+    width: 100%;
+    height: 88%;
+    background-color: transparent;
+    color: #fff;
+    top: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.textnbutt {
+    align-items: center;
+    justify-content: center;
+}
+
+
+.welctext {
+    font-size: 20px;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+}
+
+button {
+    width: 200px;
+    height: 50px;
+    margin: 10px auto;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #5a5858;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 800px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:before {
+    background-color: #000;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    margin-right: 10px;
+    transition: all .42s cubic-bezier(.25,.8,.25,1);
+    width: 0;
+}
+
+button:hover {
+    background-color: #ffffffe2;
+    color: #000;
+}
+
+button:hover:before {
+    background-color: #000;
+    width: 3rem;
+}
+
+.brandtext {
+    font-size: 200px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: #6e86b00b; /* Initially invisible */
+    position: relative;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.brandtext::after {
+    content: "QUIVER"; /* Mirror the text */
+    position: absolute;
+    left: 0;
+    top: 100%; /* Start from below */
+    width: 100%;
+    height: fit-content;
+    color: #0560f0; /* Text color */
+    animation: fillUp 5s ease-out forwards;
+}
+
+@keyframes fillUp {
+    0% {
+        top: 100%;
+        opacity: 0;
+    }
+    50% {
+        opacity: 0;
+    }
+    
+    100% {
+        top: 0%;
+        opacity: 1;
+    }
 }
