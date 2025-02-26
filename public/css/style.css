@@ -221,6 +221,12 @@
     font-weight: bold;
 }
 
+.login a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
+}
+
 .login:hover{
     background-color: #ffffffe2;
     color: #000;
@@ -265,6 +271,12 @@ button {
     border-radius: 800px;
     font-weight: bold;
     cursor: pointer;
+}
+
+.buttlinks {
+    text-decoration: none;
+    font-weight: bold;
+    color: #000;
 }
 
 button:before {
