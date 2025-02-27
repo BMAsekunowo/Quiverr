@@ -38,16 +38,18 @@
                 <div class="form-container" id="sign-in"> <!-- Sign in formfield-->
                     <h2>Welcome Back</h2>
                     <p>Not registered yet? <span class="toggle-link" onclick="toggleForm()">Sign up</span></p>
+
+                    <div id="signInMessage" class="infobox"></div>
                     <form>
                         <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" placeholder="Enter your name">
+                            <label for="email">Email</label>
+                            <input type="email" id="name" placeholder="Enter your email">
                         </div>
                         <div class="form-group">
                             <label for="password">Password</label>
                             <input type="password" id="password" placeholder="Enter your password">
                         </div>
-                        <button type="submit" class="submit-btn">Sign In</button>
+                        <button type="submit" class="submit-btn" onclick="signInEmail()">Sign In</button>
                     </form>
     
                     <p class="signup-link">Forgotten your password or your login details? <a class="help" href="#">Get help signing in.</a></p>
@@ -74,22 +76,24 @@
                 <div class="form-container" id="sign-up"> <!-- Sign up formfield-->
                     <h2>Get Started</h2>
                     <p>Already have an account? <span class="toggle-link" onclick="toggleForm()">Sign in</span></p>
+
+                    <div id="signUpMessgae" class="infobox"></div>
                     <form>
                         <div class="form-group">
-                            <label for="signupname">Name</label>
-                            <input type="text" id="signupname" placeholder="Enter your name">
+                            <label for="username">Name</label>
+                            <input type="text" id="username" placeholder="Enter your name">
                         </div>
 
                         <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" placeholder="Enter your email">
+                            <label for="remail">Email</label>
+                            <input type="email" id="remail" placeholder="Enter your email">
                         </div>
 
                         <div class="form-group">
-                            <label for="signup-password">Password</label>
-                            <input type="password" id="signup-password" placeholder="Enter your password">
+                            <label for="rpassword">Password</label>
+                            <input type="password" id="rpassword" placeholder="Enter your password">
                         </div>
-                        <button type="submit" class="submit-btn">Sign Up</button>
+                        <button type="submit" class="submit-btn" onclick="signUpEmail()">Sign Up</button>
                     </form>
     
                     <p class="signup-link">Have an acccount and forgotten your password or your login details? <a class="help" href="#">Get help signing in.</a></p>
@@ -99,14 +103,14 @@
                     </div>
         
                     <div class="social-links">
-                        <button class="social-btn" id="google-signin" onclick="signGoogle();">
+                        <button class="social-btn" onclick="signGoogle()">
                             <i class="social fab fa-google"></i>Google
                         </button>
-                        <button class="social-btn" id="twitter-signin" onclick="signTwitter()">
+                        <button class="social-btn" onclick="signTwitter()">
                             <i class="social fab fa-twitter"></i> Twitter
                         </button>
                          
-                         <button class="social-btn" id="github-signin" onclick="signGithub()">
+                        <button class="social-btn" onclick="signGithub()">
                             <i class="social fab fa-github"></i>Github
                         </button>
                     </div>
@@ -120,54 +124,8 @@
 
     </div>   <!-- Wrapper closing div -->
 
-    <script src="script.js"></script>
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
-        import { 
-            getAuth,
-            signInWithPopup,
-            GoogleAuthProvider
-        } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
-
-        // Firebase configuration
-        const firebaseConfig = {
-            apiKey: "AIzaSyAZ0uvPU7e2lHGBpBQSfQYMOrrbmHmisMU",
-            authDomain: "quiverby-bma.firebaseapp.com",
-            projectId: "quiverby-bma",
-            storageBucket: "quiverby-bma.firebasestorage.app",
-            messagingSenderId: "545637166421",
-            appId: "1:545637166421:web:23159d1d3bb4b22ac353dc"
-        };
-
-        // Initialize Firebase
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const provider = new GoogleAuthProvider();
-        
-
-        let googleSignIn = document.getElementById("google-signin");
-
-        const signGoogle = () => {
-            signInWithPopup(auth, provider)
-            .then((result) => {
-                // The signed-in user info.
-                const user = result.user;
-                console.log("✅ User signed in: ", user);
-            }).catch((error) => {
-                // Handle Errors here.
-                const errorCode = error.code;
-                const errorMessage = error.message;
-                // The email of the user's account used.
-                const email = error.customData.email;
-                console.log(errorCode, errorMessage, email);
-                // The AuthCredential type that was used.
-                const credential = GoogleAuthProvider.credentialFromError(error);
-                console.log(credential);
-                // ...
-            });
-        }
-        window.signGoogle = signGoogle;
-        
+    <!-- <script src="script.js"></script> -->
+    <script src="script.js" defer type="module">
 
     </script>
 </body>

@@ -260,6 +260,19 @@
     display: block;
 }
 
+.infobox {
+    background: transparent;
+    width: 100%;
+    text-align: center;
+    padding: 20px;
+    color: #ff0000;
+    font-weight: bold;
+    font-size: 14px;
+    opacity: 0;
+    display: none;
+    animation: fadeOut 7s forwards;
+}
+
 .form-container {
     width: 100%;
     text-align: center;
