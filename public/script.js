@@ -1,5 +1,5 @@
 
-    function toggleForm() {
+    const toggleForm = () => {
         let container = document.getElementById('container');
         let signInForm = document.getElementById('sign-in');
         let signUpForm = document.getElementById('sign-up');

@@ -47,7 +47,7 @@
                             <label for="password">Password</label>
                             <input type="password" id="password" placeholder="Enter your password">
                         </div>
-                        <a type="submit" class="submit-btn">Sign In</a>
+                        <button type="submit" class="submit-btn">Sign In</button>
                     </form>
     
                     <p class="signup-link">Forgotten your password or your login details? <a class="help" href="#">Get help signing in.</a></p>
@@ -57,12 +57,16 @@
                     </div>
 
                     <div class="social-links">
-                        <button class="social" id="google-signin">
-                            <a class="social" href="" ><i class="social fab fa-google"></i></a>
-                         </button>
-                         <button class="social" id="twitter-signin" onclick="buttonTest2()"><a class="social" href="#"><i class="social fab fa-twitter"></i></a></button>
+                        <button class="social-btn" id="google-signin" onclick="signGoogle();">
+                            <i class="social fab fa-google"></i>Google
+                        </button>
+                        <button class="social-btn" id="twitter-signin" onclick="signTwitter()">
+                            <i class="social fab fa-twitter"></i> Twitter
+                        </button>
                          
-                         <button class="social" id="github-signin" onclick="buttonTest3()"><a class="social" href="#"><i class="social fab fa-github"></i></a></button>
+                         <button class="social-btn" id="github-signin" onclick="signGithub()">
+                            <i class="social fab fa-github"></i>Github
+                        </button>
                     </div>
                 </div>
                             <!-- End of Sign IN form field -->
@@ -85,7 +89,7 @@
                             <label for="signup-password">Password</label>
                             <input type="password" id="signup-password" placeholder="Enter your password">
                         </div>
-                        <a type="submit" class="submit-btn">Sign Up</a>
+                        <button type="submit" class="submit-btn">Sign Up</button>
                     </form>
     
                     <p class="signup-link">Have an acccount and forgotten your password or your login details? <a class="help" href="#">Get help signing in.</a></p>
@@ -95,12 +99,16 @@
                     </div>
         
                     <div class="social-links">
-                        <button class="social" id="google-signin">
-                           <a class="social" href="" ><i class="social fab fa-google"></i></a>
+                        <button class="social-btn" id="google-signin" onclick="signGoogle();">
+                            <i class="social fab fa-google"></i>Google
                         </button>
-                        <button class="social" id="twitter-signin" onclick="buttonTest2()"><a class="social" href="#"><i class="social fab fa-twitter"></i></a></button>
-                        
-                        <button class="social" id="github-signin" onclick="buttonTest3()"><a class="social" href="#"><i class="social fab fa-github"></i></a></button>
+                        <button class="social-btn" id="twitter-signin" onclick="signTwitter()">
+                            <i class="social fab fa-twitter"></i> Twitter
+                        </button>
+                         
+                         <button class="social-btn" id="github-signin" onclick="signGithub()">
+                            <i class="social fab fa-github"></i>Github
+                        </button>
                     </div>
                 </div>
             </div>
@@ -113,14 +121,13 @@
     </div>   <!-- Wrapper closing div -->
 
     <script src="script.js"></script>
-    <script defer type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
         import { 
-            getAuth, 
-            signInWithRedirect, 
-            getRedirectResult, 
-            GoogleAuthProvider 
-        } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-auth.js";
+            getAuth,
+            signInWithPopup,
+            GoogleAuthProvider
+        } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
         // Firebase configuration
         const firebaseConfig = {
@@ -137,21 +144,29 @@
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        // Google Sign-In (Redirect)
-        document.getElementById("google-signin").addEventListener("click", function () {
-            signInWithRedirect(auth, provider);
-        });
+        let googleSignIn = document.getElementById("google-signin");
 
-        // Handle Redirect Result
-        getRedirectResult(auth)
+        const signGoogle = () => {
+            signInWithPopup(auth, provider)
             .then((result) => {
-                if (result && result.user) {
-                    console.log("✅ User signed in:", result.user);
-                }
-            })
-            .catch((error) => {
-                console.error("❌ Error signing in:", error);
+                // The signed-in user info.
+                const user = result.user;
+                console.log("✅ User signed in: ", user);
+            }).catch((error) => {
+                // Handle Errors here.
+                const errorCode = error.code;
+                const errorMessage = error.message;
+                // The email of the user's account used.
+                const email = error.customData.email;
+                console.log(errorCode, errorMessage, email);
+                // The AuthCredential type that was used.
+                const credential = GoogleAuthProvider.credentialFromError(error);
+                console.log(credential);
+                // ...
             });
+        }
+        window.signGoogle = signGoogle;
+
     </script>
 </body>
 </html>
