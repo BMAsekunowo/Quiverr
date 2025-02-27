@@ -368,13 +368,16 @@
 }
 
 .social {
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
+    font-size: 18px;
     background-color: #fff;
     color: #0560f0;
+    text-decoration: none;
     border-radius: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    border: #5a5858 1px solid;
 }
