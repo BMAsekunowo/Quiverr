@@ -10,35 +10,11 @@
 </head>
 <body>
     <div class="wrapper">
-
-        <!-- <div class="animcov">
-          <div class="anim1">
-            <div class="anim2">
-              <div class="anim3"></div>         
-            </div>
-          </div>
-        </div> -->
-                    <!-- Navbar -->
-        <!-- <nav class="navbar">
-          <ul class="nav1st">
-            <li class="iconwrap"><a href=""><img class="logoi" src="images/logo.png" alt="Logo" srcset=""></a></li>
-            <li class="iconwrap1"><a href=""><img class="homei" src="images/home.png" alt="Home Icon" srcset=""></a></li>
-          </ul>
-    
-          <ul class="nav2nd">
-            <li class="appd"><span><img class="appdimg" src="images/download.png" alt="Download Icon" srcset=""></span> Download App</li>
-            <li class="welcometxt"> </li>
-            <li class="userimg"><a href="getstarted.html"></a></li>
-          </ul>
-        </nav> -->
-                    <!-- Navbar ends here -->
-
-                    <!-- Main content -->
         <div class="wrapped">
             <!-- Sidebar -->
             <div class="sidebar">
                 <div class="brand">
-                    <i class="fa-solid fa-music logo"></i>
+                    <span class="iconwrap"><a href=""><img class="logoi" src="images/logo.png" alt="Logo" srcset=""></a></span>
                     <span class="brand-name">Quiverr</span>
                 </div>
 
@@ -84,7 +60,10 @@
                         <span class="nav-item active">MUSIC</span>
                         <span class="nav-item">LIVE</span>
                         <span class="nav-item">PODCAST</span>
-                        <input type="text" class="search-bar" placeholder="Search your favorite music">
+                        <div class="search-container">
+                            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                            <input type="text" class="search-bar" placeholder="Search your favorite music">
+                        </div>
                     </div>
 
                     <div class="nav-right">
@@ -116,7 +95,10 @@
 
                 <!-- Top Artists Section -->
                 <div class="top-artists">
-                    <h3 class="section-title">Top Artists</h3>
+                    <div class="titlebar">
+                        <h3 class="section-title">Top Artists</h3>
+                        <h4 class="subtitle">See All</h4>
+                    </div>
                     <div class="top-artists-grid">
                         <div class="grid-item">
                             <img src="images/omahlay.jpg" alt="Omah Lay">
@@ -139,7 +121,10 @@
 
                 <!-- Billboard Topchart Section -->
                 <div class="billboard-topchart">
-                    <h3 class="section-title">Billboard Topchart</h3>
+                    <div class="titlebar">
+                        <h3 class="section-title">Billboard Topchart</h3>
+                        <h4 class="subtitle">See All</h4>
+                    </div>
                     <div class="topchart-grid">
                         <div class="grid-item">
                             <img src="images/wizkid-album.jpg" alt="Wizkid Album">
@@ -162,10 +147,14 @@
 
                 <!-- Play Panel -->
                 <div class="play-panel">
+                    <div class="titlebar">
+                        <h3 class="section-title">Now Playing</h3>
+                        <span class="icon"><i class="fa-solid fa-list-music queue-icon"></i></span>
+                    </div>
                     <img src="images/wizkid.jpg" class="play-img" alt="Wizkid">
                     <div class="play-details">
-                        <h4>Made in Lagos</h4>
                         <p>Wizkid</p>
+                        <h4>Made in Lagos</h4>
                     </div>
                     <div class="play-controls">
                         <button><i class="fa-solid fa-backward"></i></button>

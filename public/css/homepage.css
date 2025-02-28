@@ -7,12 +7,26 @@ body {
     color: #ffffff;
 }
 
+.wrapper {
+    width: 100%;
+    height: 100vh;
+    /* background-image: linear-gradient(to right,#000, #000, #000, #4382f0,#000, #000, #000); */
+    position: fixed;
+}
+
+.wrapped{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+}
+
 .sidebar {
-    width: 150px;
+    width: 10%; /* 150px/1500 */
     height: 100vh;
     background-color: #111;
     padding: 25px;
     position: fixed;
+    box-shadow: 0 0 10px 0 #055ff042;
     left: 0;
     top: 0;
     display: flex;
@@ -28,9 +42,20 @@ body {
     margin-bottom: 30px;
 }
 
-.brand .logo {
-    font-size: 24px;
-    margin-right: 10px;
+.iconwrap {
+    width: 40px;
+    height: 40px;
+    margin: 0 10px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logoi {
+    width: 30px;
+    height: 30px;
 }
 
 /* Sidebar Sections */
@@ -81,7 +106,7 @@ ul li a i {
 /* Hover Effect */
 ul li a:hover {
     opacity: 1;
-    color: #1db954;
+    color: #0560f0;
     transform: translateX(5px); /* Moves text slightly to the right */
 }
 
@@ -91,23 +116,25 @@ ul li a:hover {
 
 /*/Main Content Styling*/
 .maincontent {
-    margin-left: 170px;
-    right: 0;
-    padding: 20px;
+    margin-left: 13.5%; /* 202.5/1500 */
+    margin-top: 0;
+    margin-right: 0;
+    width: 86.5%;
+    background-color: #000;
     color: white;
     position: relative;
 }
 
-/* ✅ NAVBAR */
+/*  Navbar */
 .navbar {
     display: flex;
     justify-content: space-between;
     top: 0;
     right: 0;
-    padding: 15px 30px;
-    background: #111;
+    padding: 15px 10px;
+    background: transparent;
     align-items: center;
-    border-bottom: 1px solid #333;
+    border: 0;
 }
 
 /* Left (Music, Live, Podcast, Search) */
@@ -119,33 +146,57 @@ ul li a:hover {
 
 .nav-item {
     cursor: pointer;
+    font-size: 14px;
     font-weight: 600;
     padding: 5px 10px;
     transition: color 0.3s ease;
     opacity: 0.7;
 }
 
-.nav-item.active {
-    color: #1db954;
+.nav-item:hover {
+    color: #0560f0;
     opacity: 1;
 }
 
-/* Search Bar */
+.nav-item.active {
+    color: #0560f0;
+    opacity: 1;
+}
+
+/* Search Container (Positioning) */
+.search-container {
+    position: relative;
+    display: flex;
+    margin-left: 11.56%; /* 150px/1297.5 */
+    align-items: center;
+    width: 450px;
+}
+
+/* Search Bar Styling */
 .search-bar {
-    padding: 10px;
-    border-radius: 20px;
+    width: 100%;
+    padding: 10px 40px 10px 15px; /* Left padding for text, right padding for icon */
+    border-radius: 5px;
     border: none;
     outline: none;
     background: #222;
     color: white;
-    width: 300px;
+    font-size: 14px;
+}
+
+/* Search Icon Styling */
+.search-icon {
+    position: absolute;
+    right: 15px; /* Icon inside input field */
+    color: #bbb;
+    font-size: 16px;
 }
 
 /* Right (Profile, Notifications, Settings) */
 .nav-right {
     display: flex;
     align-items: center;
-    gap: 15px;
+    gap: 20px;
 }
 
 .icon {
@@ -156,36 +207,38 @@ ul li a:hover {
 }
 
 .icon:hover {
-    color: #1db954;
+    color: #0560f0;
     opacity: 1;
 }
 
 .profile-img {
     width: 40px;
     height: 40px;
+    background: #fff;
     border-radius: 50%;
 }
 
 .display-name {
     font-weight: 600;
+    opacity: 0.7;
+    transition: color 0.3s ease;
 }
 
 /* ✅ TRENDING SECTION */
 .content-grid {
     display: grid;
     grid-template-columns: 1.2fr 1fr;
-    padding: 50px;
+    padding: 10px 40px;
     align-items: center;
     gap: 50px;
 }
 
 .left-column {
     text-align: left;
-    padding-left: 20px;
 }
 
 .trending-title {
-    color: #1db954;
+    color: #0560f0;
     font-weight: 600;
     margin-bottom: 5px;
 }
@@ -215,7 +268,7 @@ ul li a:hover {
     display: flex;
     align-items: center;
     gap: 5px;
-    background: #1db954;
+    background: #0560f0;
     color: white;
     font-weight: bold;
     border-radius: 5px;
@@ -240,27 +293,55 @@ ul li a:hover {
 
 /* ✅ TOP ARTISTS SECTION */
 .top-artists {
-    margin-top: 40px;
+    margin-top: 10px;
+    padding: 20px;
+    width: 70%;
+    height: 220px;
+}
+
+.titlebar{
+    display: flex;
+    width: 100%;
+    height: 20px;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.titlebar h4 {
+    font-size: 12px;
+    font-weight: bold;
+    color: #333;
 }
 
 .top-artists-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 200px;
+    grid-template-columns: repeat(4, 200px);
+    background-color: #333;
+    border-radius: 10px;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 10px;
     align-items: center;
 }
 
 /* ✅ BILLBOARD TOPCHART SECTION */
 .billboard-topchart {
-    margin-top: 40px;
+    margin-top: 10px;
+    padding: 20px;
+    width: 70%;
+    height: 220px;
 }
 
 .topchart-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    width: 100%;
+    height: 200px;
+    grid-template-columns: repeat(4, 200px);
+    background-color: #333;
+    border-radius: 10px;
     gap: 20px;
-    margin-top: 30px;
+    margin-top: 10px;
     align-items: center;
 }
 
@@ -270,22 +351,25 @@ ul li a:hover {
 }
 
 .grid-item img {
-    width: 110px;
+    width: 80%;
+    margin: 10px 10%;
     height: 110px;
+    background-color: #fff;
     border-radius: 10px;
 }
 
 /* ✅ PLAY PANEL (BOTTOM RIGHT) */
 .play-panel {
     position: fixed;
-    bottom: 20px;  /* Positioned slightly above the bottom */
-    right: 20px;  /* Positioned at the bottom right */
+    bottom: 30px;  
+    right: 20px; 
     background: #222;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 320px;
-    height: 70px;
+    width: 20%; /* 300px/1500 */
+    height: 450px;
     padding: 10px 15px;
     border-radius: 12px;
     box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
@@ -293,9 +377,11 @@ ul li a:hover {
 
 /* Play Panel Album Cover */
 .play-img {
-    width: 50px;
-    height: 50px;
-    border-radius: 5px;
+    width: 80%;
+    margin: 20px 10%;
+    border-radius: 10px;
+    background-color: #fff;
+    height: 300px;
 }
 
 /* Play Panel Song Details */
@@ -337,3 +423,4 @@ ul li a:hover {
     color: #1db954;
     transform: scale(1.1);
 }
+
