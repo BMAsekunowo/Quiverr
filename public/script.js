@@ -59,28 +59,15 @@
             signInWithPopup(auth, provider)
             .then((result) => {
                 let userlogincred = result.user;
-                console.log("✅ User signed in: ", userlogincred);
+                console.log("✅ User signed in with Google: ", userlogincred);
+                localStorage.setItem("user", JSON.stringify(userlogincred));
+                window.location.href = "homepage.html";
             }).catch((error) => {
                 console.error("Error:", error.code, error.message, error.customData?.email);
                 console.log(GoogleAuthProvider.credentialFromError(error));
             });
         }
         window.signGoogle = signGoogle;
-
-        function showMessage(message, divId) {
-            let messageDiv = document.getElementById(divId);
-            if (!messageDiv) {
-                console.error("showMessage error: Element with ID", divId, "not found.");
-                return; // Exit function to prevent further errors
-            }
-        
-            messageDiv.style.display = "block";
-            messageDiv.innerHTML = message;
-            messageDiv.style.opacity = 1;
-            setTimeout(function () {
-                messageDiv.style.opacity = 0;
-            }, 5000);
-        }
                 
             // GitHub Sign-in
         const signGitHub = () => {

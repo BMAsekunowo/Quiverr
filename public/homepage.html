@@ -3,9 +3,184 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="css/homepage.css">
 </head>
 <body>
+    <div class="wrapper">
+
+        <!-- <div class="animcov">
+          <div class="anim1">
+            <div class="anim2">
+              <div class="anim3"></div>         
+            </div>
+          </div>
+        </div> -->
+                    <!-- Navbar -->
+        <!-- <nav class="navbar">
+          <ul class="nav1st">
+            <li class="iconwrap"><a href=""><img class="logoi" src="images/logo.png" alt="Logo" srcset=""></a></li>
+            <li class="iconwrap1"><a href=""><img class="homei" src="images/home.png" alt="Home Icon" srcset=""></a></li>
+          </ul>
     
+          <ul class="nav2nd">
+            <li class="appd"><span><img class="appdimg" src="images/download.png" alt="Download Icon" srcset=""></span> Download App</li>
+            <li class="welcometxt"> </li>
+            <li class="userimg"><a href="getstarted.html"></a></li>
+          </ul>
+        </nav> -->
+                    <!-- Navbar ends here -->
+
+                    <!-- Main content -->
+        <div class="wrapped">
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <div class="brand">
+                    <i class="fa-solid fa-music logo"></i>
+                    <span class="brand-name">HomePlay</span>
+                </div>
+
+                <nav class="menu">
+                    <h3>MENU</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-house"></i> Home</a></li>
+                        <li><a href="#"><i class="fa-solid fa-compass"></i> Explore</a></li>
+                        <li><a href="#"><i class="fa-solid fa-compact-disc"></i> Albums</a></li>
+                        <li><a href="#"><i class="fa-solid fa-microphone-lines"></i> Artists</a></li> <!-- Fixed Icon -->
+                        <li><a href="#"><i class="fa-solid fa-video"></i> Videos</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="library">
+                    <h3>LIBRARY</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-clock-rotate-left"></i> Recent</a></li>
+                        <li><a href="#"><i class="fa-solid fa-compact-disc"></i> Albums</a></li>
+                        <li><a href="#"><i class="fa-solid fa-microphone"></i> Podcasts</a></li>
+                        <li><a href="#"><i class="fa-solid fa-download"></i> Downloads</a></li>
+                        <li><a href="#"><i class="fa-solid fa-folder"></i> Locals</a></li>
+                    </ul>
+                </nav>
+
+                <nav class="playlists">
+                    <h3>PLAYLISTS</h3>
+                    <ul>
+                        <li><a href="#"><i class="fa-solid fa-plus"></i>New Playlist</a></li>
+                        <li><a href="#"><i class="fa-solid fa-music"></i> American Pop</a></li> <!-- Added Icon -->
+                        <li><a href="#"><i class="fa-solid fa-fire"></i> American Hitz</a></li> <!-- Added Icon -->
+                        <li><a href="#"><i class="fa-solid fa-drum"></i> Nigerian Hitz</a></li> <!-- Added Icon -->
+                        <li><a href="#"><i class="fa-solid fa-globe"></i> Afrobeats</a></li> <!-- Added Icon -->
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <div class="maincontent">
+                <!-- Navbar -->
+                <nav class="navbar">
+                    <div class="nav-left">
+                        <span class="nav-item active">MUSIC</span>
+                        <span class="nav-item">LIVE</span>
+                        <span class="nav-item">PODCAST</span>
+                        <input type="text" class="search-bar" placeholder="Search your favorite music">
+                    </div>
+
+                    <div class="nav-right">
+                        <i class="fa-solid fa-bell icon"></i> <!-- Notifications -->
+                        <i class="fa-solid fa-gear icon"></i> <!-- Settings -->
+                        <img src="images/profile.jpg" class="profile-img" alt="User">
+                        <span class="display-name">Taylor Hernandez</span>
+                    </div>
+                </nav>
+
+                <!-- Trending Section -->
+                <div class="content-grid">
+                    <!-- Left Column: Trending Song -->
+                    <div class="left-column">
+                        <h2 class="trending-title">Trending</h2>
+                        <h1 class="song-title">Godly</h1>
+                        <p class="artist-name">Omah Lay</p>
+                        <div class="btn-group">
+                            <button class="play-btn"><i class="fa-solid fa-play"></i> Play Now</button>
+                            <button class="download-btn"><i class="fa-solid fa-download"></i> Download</button>
+                        </div>
+                    </div>
+
+                    <!-- Right Column: Trending Artist Image -->
+                    <div class="right-column">
+                        <img src="images/omahlay.jpg" class="trending-img" alt="Omah Lay">
+                    </div>
+                </div>
+
+                <!-- Top Artists Section -->
+                <div class="top-artists">
+                    <h3 class="section-title">Top Artists</h3>
+                    <div class="top-artists-grid">
+                        <div class="grid-item">
+                            <img src="images/omahlay.jpg" alt="Omah Lay">
+                            <p>Omah Lay</p>
+                        </div>
+                        <div class="grid-item">
+                            <img src="images/wizkid.jpg" alt="Wizkid">
+                            <p>Wizkid</p>
+                        </div>
+                        <div class="grid-item">
+                            <img src="images/lilbaby.jpg" alt="Lil Baby">
+                            <p>Lil Baby</p>
+                        </div>
+                        <div class="grid-item">
+                            <img src="images/burnaboy.jpg" alt="Burna Boy">
+                            <p>Burna Boy</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Billboard Topchart Section -->
+                <div class="billboard-topchart">
+                    <h3 class="section-title">Billboard Topchart</h3>
+                    <div class="topchart-grid">
+                        <div class="grid-item">
+                            <img src="images/wizkid-album.jpg" alt="Wizkid Album">
+                            <p>Made in Lagos</p>
+                        </div>
+                        <div class="grid-item">
+                            <img src="images/davido-album.jpg" alt="Davido Album">
+                            <p>A Better Time</p>
+                        </div>
+                        <div class="grid-item">
+                            <img src="images/lilbaby-album.jpg" alt="Lil Baby Album">
+                            <p>My Turn (Deluxe)</p>
+                        </div>
+                        <div class="grid-item">
+                            <img src="images/olamide-album.jpg" alt="Olamide Album">
+                            <p>Carpe Diem</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Play Panel -->
+                <div class="play-panel">
+                    <img src="images/wizkid.jpg" class="play-img" alt="Wizkid">
+                    <div class="play-details">
+                        <h4>Made in Lagos</h4>
+                        <p>Wizkid</p>
+                    </div>
+                    <div class="play-controls">
+                        <button><i class="fa-solid fa-backward"></i></button>
+                        <button><i class="fa-solid fa-play"></i></button>
+                        <button><i class="fa-solid fa-forward"></i></button>
+                    </div>
+                </div>
+            </div>
+                    <!-- Main content ends here -->
+
+                    <!-- Footer -->
+
+
+    </div>          <!-- Wrapper ends here -->
+
+    <script src="js/homepage.js" defer type="module"></script>
 </body>
 </html>
