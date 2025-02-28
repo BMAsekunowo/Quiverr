@@ -95,6 +95,7 @@ ul li a:hover {
     right: 0;
     padding: 20px;
     color: white;
+    position: relative;
 }
 
 /* ✅ NAVBAR */
