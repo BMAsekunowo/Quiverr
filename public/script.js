@@ -27,9 +27,7 @@
             signInWithPopup,
             GoogleAuthProvider,
             GithubAuthProvider,
-            TwitterAuthProvider,
-            createUserWithEmailAndPassword,
-            signInWithEmailAndPassword
+            TwitterAuthProvider
         } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
 
         import { 
@@ -69,56 +67,20 @@
         }
         window.signGoogle = signGoogle;
 
-        const showMessage = (message,divId) => {
-            let messageDiv = document.getElementsByName("divId");
-            messageDiv.style.display ="block";
-            messageDiv.InnerHTML = message;
+        function showMessage(message, divId) {
+            let messageDiv = document.getElementById(divId);
+            if (!messageDiv) {
+                console.error("showMessage error: Element with ID", divId, "not found.");
+                return; // Exit function to prevent further errors
+            }
+        
+            messageDiv.style.display = "block";
+            messageDiv.innerHTML = message;
             messageDiv.style.opacity = 1;
-            setTimeout(function(){
+            setTimeout(function () {
                 messageDiv.style.opacity = 0;
-            },5000);
+            }, 5000);
         }
-
-
-            // Signup with Email and Password
-        const signUpEmail = () => {
-            let email = document.getElementById("remail").value;
-            let password = document.getElementById("rpassword").value;
-            let username = document.getElementById("username").value;
-
-            createUserWithEmailAndPassword(auth, email, password)
-                .then((userCredential) => {
-                    let newuser = userCredential.user;
-                    userData = {
-                        username: username,
-                        email: email,
-                        password: password
-                    }
-
-                    showMessage('Account Created Successfully');
-                    
-                    const docREf = doc(db, "users", newuser.uid);
-                    setDoc(docREf,userData)
-
-                })
-
-                .then(() => {
-                    window.location.href = "home.html";
-                })
-
-                .catch((error) => {
-                    const errorCode =error.code;
-
-                    if (errorCode == 'auth/email-already-in-use'){
-                        showMessage('Email Already In Use!!!, Sign In instead', 'signUpMessage');
-                    }
-
-                    else {
-                        showMessage('Unable to Sign Up', 'signUpMessage');
-                    }
-                })
-        };
-        window.signUpEmail = signUpEmail;
                 
             // GitHub Sign-in
         const signGitHub = () => {
