@@ -170,6 +170,29 @@
 
     </div>          <!-- Wrapper ends here -->
 
-    <script src="js/homepage.js" defer type="module"></script>
+    <script src="js/homepage.js"></script>
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";
+        import { 
+            getAuth,
+            signInWithPopup,
+            GoogleAuthProvider,
+            GithubAuthProvider,
+            TwitterAuthProvider
+        } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-auth.js";
+
+            // Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyAZ0uvPU7e2lHGBpBQSfQYMOrrbmHmisMU",
+            authDomain: "quiverby-bma.firebaseapp.com",
+            projectId: "quiverby-bma",  
+            storageBucket: "quiverby-bma.firebasestorage.app",
+            messagingSenderId: "545637166421",
+            appId: "1:545637166421:web:23159d1d3bb4b22ac353dc"
+        };
+
+            // Initialize Firebase
+        const app = initializeApp(firebaseConfig);
+    </script>
 </body>
 </html>
