@@ -1,29 +1,50 @@
- // Retrieve user data from localStorage
+//Spotify API configuration
+const APICONTROLLER =(function(){
+    const clientId = '';
+    const clientSecret = '';
 
-const user = JSON.parse(localStorage.getItem(user));
 
-// Select elements
-let displayName = document.getElementsByClassName('display-name')[0]; // Ensure it's the first element
-let usernameElement = document.getElementById('username'); // Get the element, not its value
-let userImg = document.getElementsByClassName('profile-img')[0]; // Ensure it's an <img> tag
+    const _getToken = async () => {
+        const result = await fetch('https://accounts.spotify.com/api/token', {
+            method: 'POST',
+            headers: {
+                'Content-Type' : 'application/x-www-form-urlencoded',
+                'Authorization' : 'Basic ' + btoa(clientId + ':' + clientSecret)
+            },
+            body: 'grant_type=client_credentials'
+        });
 
-// Ensure elements exist before modifying them
-if (welcomeUser && userImg) {
-    // Check if user data is available
-    if (user) {
-        displayName.innerHTML = "Welcome, " + (user.displayName || "User"); // Google sign-in provides displayName
-        userImg.src = user.photoURL || "https://via.placeholder.com/150"; // Show profile picture or default image
-    } 
-    else if (usernameElement && usernameElement.value) {
-        displayName.innerHTML = "Welcome, " + usernameElement.value; // Use the entered username
-        userImg.src = "https://via.placeholder.com/150"; // Default image
-    } 
-    else {
-        displayName.innerHTML = "Welcome!";
-        userImg.src = "https://via.placeholder.com/150"; // Generic default image
+        const data = await result.json();
+        return data.access_token;
     }
-    } else {
-        console.error("Error: Missing required elements!");
-}
 
+    const _getGenres = async (token) => {
+        const result = await fetch('https://api.spotify.com/v1/recommendations/available-genre-seeds', {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
 
+        const data = await result.json();
+        return data.genres;
+    }
+
+    const _getArtists = async (token, genre) => {
+        const result = await fetch(`https://api.spotify.com/v1/search?q=${genre}&type=artist`, {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+
+        const data = await result.json();
+        return data.artists.items;
+    }
+
+    const _getBillboard = async (token) => {
+        const result = await fetch('https://api.spotify.com/v1/playlists/37i9dQZEVXbMDoHDwVN2tF', {
+            method: 'GET',
+            headers: { 'Authorization' : 'Bearer ' + token}
+        });
+
+        const data = await result.json();
+        return data.tracks.items;
+    }
+})();
