@@ -357,6 +357,7 @@ ul li a:hover {
 /* Grid Items (Artists & Albums) */
 .grid-item {
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .grid-item img {

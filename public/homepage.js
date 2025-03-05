@@ -4,6 +4,8 @@ const clientSecret = 'f102a46958b64a2b9ba5970bec3432f2';
 let token = '';
 
 
+
+
 // Function to get Spotify API Token
 const _getToken = async () => {
     const result = await fetch('https://accounts.spotify.com/api/token', {
@@ -34,6 +36,8 @@ const _updateTrending = async () => {
     document.querySelector('.artist-name').textContent = topTrack.artists[0].name;
     document.querySelector('.trending-img').src = topTrack.album.images[0]?.url || '';
     document.querySelector('.trending-img').style.objectFit = 'cover';
+    
+    document.querySelector('.play-btn').onclick = () => _playSong(topTrack);
 };
 
 // Function to fetch and populate top artists
@@ -56,38 +60,65 @@ const _updateTopArtists = async () => {
 
 // Function to fetch Billboard top chart + Nigerian albums
 const _updateBillboardTopChart = async () => {
-    const billboardResult = await fetch('https://api.spotify.com/v1/playlists/37i9dQZF1DXcBWIGoYBM5M', {
-        method: 'GET',
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    
-    const nigerianAlbumsResult = await fetch('https://api.spotify.com/v1/browse/categories/afrobeat/playlists?limit=4', {
-        method: 'GET',
-        headers: { 'Authorization': 'Bearer ' + token }
-    });
-    
-    const billboardData = await billboardResult.json();
-    const nigerianAlbumsData = await nigerianAlbumsResult.json();
+    const albumIds = [
+        '2u5FhZ2YxbU4ud1HMC0KA4', // Wizkid - Made in Lagos
+        '7gUYfDjSMXdPZouXq52gNp', // Davido - Timeless
+        '6B1U3HuVhXaL7Tj1NAsxls', // Burna Boy - Love, Damini
+        '1JjVArLqF2v29D9xR2kS4y'  // Rema - Rave & Roses
+    ];
     
     const chartElements = document.querySelectorAll('.topchart-grid .grid-item');
     
-    // Billboard Top Chart
-    billboardData.tracks.items.slice(0, 2).forEach((track, index) => {
-        if (chartElements[index]) {
-            chartElements[index].querySelector('img').src = track.track.album.images[0]?.url || '';
-            chartElements[index].querySelector('p').textContent = track.track.name;
+    albumIds.forEach(async (albumId, index) => {
+        try {
+            const albumResult = await fetch(`https://api.spotify.com/v1/albums/${albumId}`, {
+                method: 'GET',
+                headers: { 'Authorization': 'Bearer ' + token }
+            });
+            
+            if (!albumResult.ok) {
+                console.error(`Failed to fetch album ${albumId}:`, albumResult.status, albumResult.statusText);
+                return;
+            }
+            
+            const albumData = await albumResult.json();
+            
+            if (chartElements[index]) {
+                chartElements[index].querySelector('img').src = albumData.images[0]?.url || '';
+                chartElements[index].querySelector('p').textContent = albumData.name;
+            }
+        } catch (error) {
+            console.error(`Error fetching album ${albumId}:`, error);
         }
     });
+};
+
+// Function to play a song and update the play panel
+const _playSong = (track) => {
+    document.querySelector('.play-img').src = track.album.images[0]?.url || '';
+    document.querySelector('.play-details h4').textContent = track.artists[0].name;
+    document.querySelector('.play-details p').textContent = track.name;
     
-    // Nigerian Albums (2 additional slots)
-    const nigerianPlaylists = nigerianAlbumsData.playlists.items.slice(0, 2);
-    nigerianPlaylists.forEach((playlist, index) => {
-        const chartIndex = index + 2; // Billboard took first 2 slots
-        if (chartElements[chartIndex]) {
-            chartElements[chartIndex].querySelector('img').src = playlist.images[0]?.url || '';
-            chartElements[chartIndex].querySelector('p').textContent = playlist.name;
-        }
-    });
+    if (track.preview_url) {
+        let audio = new Audio(track.preview_url);
+        audio.play();
+        
+        // Update Play Controls
+        const playButton = document.querySelector('.play-controls button:nth-child(2) i');
+        playButton.classList.replace('fa-play', 'fa-pause');
+        
+        playButton.onclick = () => {
+            if (audio.paused) {
+                audio.play();
+                playButton.classList.replace('fa-play', 'fa-pause');
+            } else {
+                audio.pause();
+                playButton.classList.replace('fa-pause', 'fa-play');
+            }
+        };
+    } else {
+        console.warn('No preview available for this track');
+    }
 };
 
 // Initialize Spotify Data on Load
