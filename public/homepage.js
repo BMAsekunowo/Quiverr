@@ -2,7 +2,7 @@
 const clientId = '0543e3c0e26e4423908d4d66dd1ef988';
 const clientSecret = 'f102a46958b64a2b9ba5970bec3432f2';
 let token = '';
-let audioPlayer = null; // Global audio instance
+let audioPlayer = null; 
 
 
 
@@ -59,7 +59,7 @@ const _updateTopArtists = async () => {
     });
 };
 
-// Function to fetch Billboard top chart + Nigerian albums
+// Function to fetch Nigerian albums
 const _updateBillboardTopChart = async () => {
     const albumIds = [
         '6HpMdN52TfJAwVbmkrFeBN', // Wizkid - Made in Lagos
