@@ -2,6 +2,7 @@
 const clientId = '0543e3c0e26e4423908d4d66dd1ef988';
 const clientSecret = 'f102a46958b64a2b9ba5970bec3432f2';
 let token = '';
+let audioPlayer = null; // Global audio instance
 
 
 
@@ -61,10 +62,10 @@ const _updateTopArtists = async () => {
 // Function to fetch Billboard top chart + Nigerian albums
 const _updateBillboardTopChart = async () => {
     const albumIds = [
-        '2u5FhZ2YxbU4ud1HMC0KA4', // Wizkid - Made in Lagos
-        '7gUYfDjSMXdPZouXq52gNp', // Davido - Timeless
-        '6B1U3HuVhXaL7Tj1NAsxls', // Burna Boy - Love, Damini
-        '1JjVArLqF2v29D9xR2kS4y'  // Rema - Rave & Roses
+        '6HpMdN52TfJAwVbmkrFeBN', // Wizkid - Made in Lagos
+        '6lI21W76LD0S3vC55GrfSS', // Davido - Timeless
+        '5PKl5yyetQ6mFeWK6ONbSH', // Burna Boy - I told them
+        '2DDaN7Pgx9uDPd8IbWWW9H'  // Rema - HE IS
     ];
     
     const chartElements = document.querySelectorAll('.topchart-grid .grid-item');
@@ -100,19 +101,23 @@ const _playSong = (track) => {
     document.querySelector('.play-details p').textContent = track.name;
     
     if (track.preview_url) {
-        let audio = new Audio(track.preview_url);
-        audio.play();
+        if (audioPlayer) {
+            audioPlayer.pause(); // Stop previous song if already playing
+        }
+        
+        audioPlayer = new Audio(track.preview_url);
+        audioPlayer.play();
         
         // Update Play Controls
         const playButton = document.querySelector('.play-controls button:nth-child(2) i');
         playButton.classList.replace('fa-play', 'fa-pause');
         
         playButton.onclick = () => {
-            if (audio.paused) {
-                audio.play();
+            if (audioPlayer.paused) {
+                audioPlayer.play();
                 playButton.classList.replace('fa-play', 'fa-pause');
             } else {
-                audio.pause();
+                audioPlayer.pause();
                 playButton.classList.replace('fa-pause', 'fa-play');
             }
         };
