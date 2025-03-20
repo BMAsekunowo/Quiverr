@@ -1,4 +1,4 @@
-const API_BASE_URL = "http://thetracks-api.onrender.com";
+const API_BASE_URL = "https://thetracks-api.onrender.com";
 const API_KEY = "openDoor.null"; // Replace with any valid API key from .env
 
 let audioPlayer = null;
