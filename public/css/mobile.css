@@ -1,0 +1,71 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 
+===============================================
+    Landing Page
+===============================================
+*/
+
+@media (max-width: 900px) {
+    .signup, .login, .iconwrap1 {
+        display: none;
+    }
+
+    .heros {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 100px;
+    }
+
+    .animwrap {
+        width: 60%;
+        height: auto;
+        margin: 0 auto;
+    }
+
+    .textnbutt {
+        align-items: center;
+        justify-content: center;
+    }
+
+    .welctext {
+        font-size: 14px;
+    }
+
+    .brandtext {
+        font-size: 90px;
+    }
+}
+
+/* 
+===============================================
+    GetStarted Page
+===============================================
+*/
+
+@media (max-width: 900px) {
+    .container {
+        width: 90%; 
+        left: 5%;
+        height: auto;
+        overflow: auto;
+        top: 120px;
+        flex-direction: column;
+    }
+
+    .panel {
+        top: 0;
+        width: 100%;
+        height: auto;
+        overflow: hidden;
+    }
+
+    .form-container, .animation-panel {
+        height: auto;
+    }
+}

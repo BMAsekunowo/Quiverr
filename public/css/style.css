@@ -245,6 +245,13 @@
     align-items: center;
 }
 
+.animwrap {
+    width: 400px; 
+    height: 400px; 
+    border-radius: 50%; 
+    background-color: transparent;
+}
+
 .textnbutt {
     align-items: center;
     justify-content: center;

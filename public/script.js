@@ -1,24 +1,36 @@
 
-    const toggleForm = () => {
-        let container = document.getElementById('container');
-        let signInForm = document.getElementById('sign-in');
-        let signUpForm = document.getElementById('sign-up');
-        let animePanel = document.getElementById('animation-panel');
-        let formPanel = document.getElementById('form-panel');
+const toggleForm = () => {
+    let container = document.getElementById('container');
+    let signInForm = document.getElementById('sign-in');
+    let signUpForm = document.getElementById('sign-up');
+    let animePanel = document.getElementById('animation-panel');
+    let formPanel = document.getElementById('form-panel');
+    
+    let deviceWidth = window.innerWidth; // Get device screen width
 
-        if (signUpForm.style.display === "none" || signUpForm.style.display === "") {
-            signInForm.style.display = "none";
-            signUpForm.style.display = "block";
-            animePanel.style.transform = "translateX(-100%)";  // ← This makes the panels exchange positions.
-            formPanel.style.transform = "translateX(100%)";
-        } else {
-            signInForm.style.display = "block";
-            signUpForm.style.display = "none";
-            animePanel.style.transform = "translateX(0%)"; // ← This basically leaves the panels in their original position.
-            formPanel.style.transform = "translateX(0%)";
-        }
+    if (deviceWidth <= 900 && (signUpForm.style.display === "none" || signUpForm.style.display === "")) {
+        container.style.maxWidth = "900px";
+        signInForm.style.display = "none";
+        signUpForm.style.display = "block";
+        animePanel.style.transform = "translateY(-100%)";  //˿ This basically makes the panels exchange position up-down.
+        formPanel.style.transform = "translateY(100%)";
+
+
+    } else if (deviceWidth > 900 && (signUpForm.style.display === "none" || signUpForm.style.display === "")) {
+        signInForm.style.display = "none";
+        signUpForm.style.display = "block";
+        animePanel.style.transform = "translateX(-100%)";  //˿ This basically makes the panels exchange position left-right.
+        formPanel.style.transform = "translateX(100%)";
+
+    } else {
+        signInForm.style.display = "block";
+        signUpForm.style.display = "none";
+        animePanel.style.transform = "translate(0%, 0%)"; //˿ This basically makes the panels retain their original position.
+        formPanel.style.transform = "translate(0%, 0%)";
     }
-    window.toggleForm = toggleForm
+}
+
+window.toggleForm = toggleForm;
 
 
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.3.1/firebase-app.js";

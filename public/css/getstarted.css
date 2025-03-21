@@ -6,9 +6,9 @@
     /* Major Content Wrapper */
 .wrapper {
     width: 100%;
-    height: 100vh;
+    height: 1000px;
     background-image: linear-gradient(to right,#000, #000, #000, #4382f0,#000, #000, #000);
-    position: fixed;
+    /* position: fixed; */
 }
     /* Animation design */
 .animcov {
