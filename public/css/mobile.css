@@ -49,6 +49,10 @@
 */
 
 @media (max-width: 900px) {
+    .wrapper {
+        position: relative;
+    }
+
     .container {
         width: 90%; 
         left: 5%;
@@ -65,17 +69,8 @@
         overflow: hidden;
     }
 
-    .form-container, .animation-panel {
+    .form-container {
+        width: 100%;
         height: auto;
     }
-}
-
-/* 
-===============================================
-    Homepage Responsiveness
-===============================================
-*/
-
-@media (max-width: 900px) {
-    
 }
