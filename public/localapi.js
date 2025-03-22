@@ -1,5 +1,5 @@
 const API_BASE_URL = "https://thetracks-api.onrender.com";
-const API_KEY = "openDoor.null"; // Replace with any valid API key from .env
+const API_KEY = "openDoor.null"; 
 
 let audioPlayer = null;
 
@@ -46,8 +46,7 @@ const _updateTopArtists = async () => {
 
         // Set artist image and name
         artistElements[index].querySelector('img').src = artist[0].cover;
-        artistElements[index].querySelector('p').textContent = artistName; // FIX: Use artistName
-
+        artistElements[index].querySelector('p').textContent = artistName; 
         // On click, play all five songs sequentially
         artistElements[index].onclick = () => _playArtistSongs(artist);
     });
@@ -58,7 +57,7 @@ const _playArtistSongs = (songs) => {
     let currentSongIndex = 0;
 
     const playSong = (index) => {
-        if (index < 0 || index >= songs.length) return; // Ensure valid index
+        if (index < 0 || index >= songs.length) return; 
 
         const song = songs[index];
         if (!song) return;
@@ -129,7 +128,7 @@ const _updateBillboardTopChart = async () => {
         chartElements[index].querySelector('img').src = album[0].cover;
         chartElements[index].querySelector('p').textContent = albumName;
 
-        // On click, play all five songs sequentially
+        // On click, play all songs sequentially
         chartElements[index].onclick = () => _playArtistSongs(album);
     });
 };
