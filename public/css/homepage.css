@@ -33,6 +33,18 @@ body {
     flex-direction: column;
 }
 
+.brandwrap{
+    display: flex;
+    justify-content: space-between;
+}
+
+.altnav-right {
+    height: auto;
+    gap: 5px;
+    align-items: center;
+    display: none;
+}
+
 /* Brand Name */
 .brand {
     display: flex;
